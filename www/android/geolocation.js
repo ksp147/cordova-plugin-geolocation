@@ -29,16 +29,16 @@ var pluginToNativeWatchMap = {};
 
 module.exports = {
     getCurrentPosition: function (success, error, args) {
-        var win = function () {
-            var geo = cordova.require('cordova/modulemapper').getOriginalSymbol(window, 'navigator.geolocation'); // eslint-disable-line no-undef
-            geo.getCurrentPosition(success, error, args);
-        };
-        var fail = function () {
-            if (error) {
-                error(new PositionError(PositionError.PERMISSION_DENIED, 'Illegal Access'));
-            }
-        };
-        exec(win, fail, 'Geolocation', 'getPermission', []);
+        // var win = function () {
+        //     var geo = cordova.require('cordova/modulemapper').getOriginalSymbol(window, 'navigator.geolocation'); // eslint-disable-line no-undef
+        //     geo.getCurrentPosition(success, error, args);
+        // };
+        // var fail = function () {
+        //     if (error) {
+        //         error(new PositionError(PositionError.PERMISSION_DENIED, 'Illegal Access'));
+        //     }
+        // };
+        exec(win, fail, 'Geolocation', 'getCurrentPosition', []);
     },
 
     watchPosition: function (success, error, args) {
